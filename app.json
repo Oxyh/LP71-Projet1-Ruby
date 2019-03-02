@@ -1,0 +1,16 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "LP71-Projet1-Ruby",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
