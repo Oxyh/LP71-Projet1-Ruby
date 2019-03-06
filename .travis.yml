@@ -1,6 +1,27 @@
 language: ruby
 rvm:
 - 2.6.1
+
+  before_install:
+    - gem update --system
+    - gem install bundler
+    - bundle install
+    - bundle update sqlite3
+
+  install: gem install rails
+
+  env:
+    - DB=sqlite
+    - DB=postgresql
+  script:
+    - RAILS_ENV=test bundle exec rake db:migrate --trace
+    - bundle exec rake db:test:prepare
+  before_script:
+    - psql -c 'create database my_app_test' -U postgres
+  bundler_args: --binstubs=./bundler_stubs
+
+
+
 deploy:
   provider: heroku
   api_key: 61b1f05a18a24240b9efb2d20ebd586aher
